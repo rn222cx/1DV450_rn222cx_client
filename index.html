@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html data-ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <base href="/angular/">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <script src="https://code.angularjs.org/1.2.0rc1/angular-route.js"></script>
+    <!--<script src="//maps.google.com/maps/api/js"></script>-->
+</head>
+<body>
+
+    <div data-ng-include src="'partials/shared/menu.html'"></div>
+
+    <div data-ng-view ></div>
+
+
+    <script src="app.js"></script>
+    <script src="services/StoryService.js"></script>
+    <script src="services/ResourceService.js"></script>
+    <script src="services/AuthenticationService.js"></script>
+    <script src="controllers/SimpleController.js"></script>   <!--Testing only-->
+    <script src="controllers/StoryController.js"></script>
+    <script src="controllers/LoginController.js"></script>
+
+    <script src="resources/ng-map.min.js"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmaPG9255LaIuuqvNtWzK9SkIpLy_MA6o">
+    </script>
+</body>
+</html>

@@ -2,7 +2,7 @@ app.factory('StoryService', StoryService);
 
 StoryService.$inject = ['ResourceService', '$q', '$rootScope'];
 
-function StoryService(ResourceService, $q, $rootScope) {
+function StoryService(ResourceService, $q) {
 
     var story = ResourceService('stories');
 
@@ -11,6 +11,16 @@ function StoryService(ResourceService, $q, $rootScope) {
         get: function () {
             var deferred = $q.defer();
             story.getCollection().then(function (data) {
+                deferred.resolve(data);
+            });
+
+            return deferred.promise;
+        },
+
+        searchStories: function (data) {
+
+            var deferred = $q.defer();
+            story.getCollection(data).then(function (data) {
                 deferred.resolve(data);
             });
 

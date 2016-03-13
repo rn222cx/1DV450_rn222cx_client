@@ -1,0 +1,8 @@
+<ng-map center="56.32, 16.13" zoom="2" class="story-map">
+
+    <marker data-ng-repeat="story in stories.storyList track by $index"
+            position="{{story.latitude}}, {{ story.longitude}}">
+    </marker>
+
+
+</ng-map>

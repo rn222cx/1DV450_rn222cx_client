@@ -18,10 +18,7 @@ function AuthenticationService(ResourceService, $q, $rootScope) {
                 deferred.resolve(data);
                 //$rootScope.authToken = 'Token token=' + data.token;
 
-                console.log(data);
-                console.log(data.token);
                 sessionStorage.user = data.data.token;
-
             });
 
             return deferred.promise;

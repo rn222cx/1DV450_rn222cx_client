@@ -10,14 +10,26 @@ function ResourceService($http, API){
             angular.extend(this, data);
         };
 
-        Resource.getCollection = function(){
+        Resource.getCollection = function(data){
+            // if there is no data present set it to null instead of undifined
+            data = typeof data !== 'undefined' ? data : '';
+
             var request = {
                 method: 'GET',
                 url: API.url + collectionName,
                 headers: {
                     'Api-Key': API.key
+                },
+                params: {
+                    'search': data.searches,
+                    'limit':  data.limit,
+                    'offset': data.offset,
+                    'tag':    data.tag,
+                    'location': data.location
                 }
+
             };
+
             return $http(request).then(function(response) {
                 var result = [];
 

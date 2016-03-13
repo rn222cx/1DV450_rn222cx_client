@@ -1,16 +1,31 @@
 <h2>Stories</h2>
 
+
+
+<form name="addStory" data-ng-submit="stories.searchStories(data)">
+    <input type="text" data-ng-model="data.searches" placeholder="Search" >
+    <input type="text" data-ng-model="data.limit" placeholder="Limit" >
+    <input type="text" data-ng-model="data.offset" placeholder="Offset" >
+    <input type="text" data-ng-model="data.tag" placeholder="Tag" >
+    <input type="text" data-ng-model="data.location" placeholder="Location" >
+    <button type="submit" class="button">Search</button>
+</form>
+
 <form name="addStory" data-ng-submit="stories.createStory(data)">
-    <input type="text" id="title" data-ng-model="data.title" placeholder="title" >
-    <input type="text" id="description" data-ng-model="data.description" placeholder="description">
-    <input type="text" id="address" data-ng-model="data.address" placeholder="Address">
-    <input type="text" id="latitude" data-ng-model="data.latitude" placeholder="Latitude">
-    <input type="text" id="longitude" data-ng-model="data.longitude" placeholder="Longitude">
-    <input type="text" id="tags" data-ng-model="data.tags" placeholder="Tags">
+    <input type="text" data-ng-model="data.title" placeholder="Title" >
+    <input type="text" data-ng-model="data.description" placeholder="Description">
+    <input type="text" data-ng-model="data.address" placeholder="Address">
+    <input type="text" data-ng-model="data.latitude" placeholder="Latitude">
+    <input type="text" data-ng-model="data.longitude" placeholder="Longitude">
+    <input type="text" data-ng-model="data.tags" placeholder="Tags">
     <button type="submit" class="button">Create</button>
 </form>
 
-<map center="56.32, 16.13" zoom="8" class="map" ></map>
+
+<story-map></story-map>
+
+
+<map-div id="googleMap" style="width:75%;height:75%;"></map-div>
     <h3>List all stories</h3>
 
         <table class="table" style="width: 100%;">
@@ -21,6 +36,7 @@
                 <th>Lat</th>
                 <th>Lon</th>
                 <th>Tag</th>
+
             </tr>
             </thead>
             <tbody>
@@ -32,9 +48,12 @@
                 <td data-ng-repeat="(key, value) in story.tags">
                     {{ value.name }}
                 </td>
+                <!--<td>{{ story.previous_page }}</td>-->
+                <td ng-show="$last">{{story.previous_page}}</td>
+                <td ng-show="$last">{{story.next_page}}</td>
 
             </tr>
+            <div></div>
             </tbody>
 
         </table>
-

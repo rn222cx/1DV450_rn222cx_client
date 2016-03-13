@@ -1,21 +1,26 @@
 app.controller('LoginController', LoginController);
 
-LoginController.$inject = ['AuthenticationService'];
+LoginController.$inject = ['AuthenticationService', '$scope'];
 
-function LoginController(authService){
+function LoginController(authService, $scope){
 
-    var vm = this;
-
-    vm.login = function(credentials) {
+    $scope.login = function(credentials) {
         authService.auth(credentials).then(function() {
-            console.log('inloggad');
+
         });
     };
 
-    vm.logout = function() {
-        console.log('utloggad');
-        delete sessionStorage.user;
+    $scope.logout = function() {
+        delete sessionStorage.clear();
     };
+
+    $scope.isUserLoggedIn = function() {
+        if(sessionStorage.user){
+            return true
+        }
+        return false;
+    };
+
 
 }
 

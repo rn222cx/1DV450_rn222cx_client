@@ -34,12 +34,28 @@ function ResourceService($http, API){
                 var result = [];
 
                 angular.forEach(response.data, function(value, key) {
+                    console.log(value);
                     result[key] = new Resource(value);
                 });
 
-
-
                 return result;
+            });
+
+
+        };
+
+        Resource.getSingle = function() {
+
+            var request = {
+                method: 'GET',
+                url: API.url + collectionName,
+                headers: {
+                    'Api-Key': API.key
+                }
+            };
+
+            return $http(request).success(function(response) {
+                return response;
             });
         };
 

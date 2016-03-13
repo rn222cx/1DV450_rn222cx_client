@@ -2,23 +2,29 @@ var app = angular.module('app', ['ngRoute', 'ngMap']);
 
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
-        .when('/stories',
-            {
-                controller: 'SimpleController',
-                templateUrl: 'partials/view1.html'
-            })
         .when('/',
             {
                 controller: 'StoryController',
                 templateUrl: 'partials/stories.html',
                 controllerAs: 'stories'
             })
-        .when('/login',
+        //.when('/login',
+        //    {
+        //        controller: 'LoginController',
+        //       // templateUrl: 'partials/login.html'
+        //      //  controllerAs: 'login'
+        //    })
+        .when('/stories',
             {
-                controller: 'LoginController',
-                templateUrl: 'partials/login.html',
-                controllerAs: 'logins'
+                controller: 'SimpleController',
+                templateUrl: 'partials/view1.html'
             })
+        .when('/users/:id',
+            {
+            controller: 'CreatorController',
+            templateUrl: 'partials/creator-detail.html',
+            controllerAs: 'creator'
+           })
         .otherwise({redirectTo: '/'});
 
     $locationProvider.html5Mode(true);

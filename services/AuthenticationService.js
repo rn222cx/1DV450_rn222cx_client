@@ -1,8 +1,8 @@
 app.factory('AuthenticationService', AuthenticationService);
 
-AuthenticationService.$inject = ['ResourceService', '$q', '$rootScope'];
+AuthenticationService.$inject = ['ResourceService', '$q'];
 
-function AuthenticationService(ResourceService, $q, $rootScope) {
+function AuthenticationService(ResourceService, $q) {
 
     var story = ResourceService('token');
 
@@ -16,8 +16,8 @@ function AuthenticationService(ResourceService, $q, $rootScope) {
 
             story.save('token', data, credential).then(function (data) {
                 deferred.resolve(data);
-                //$rootScope.authToken = 'Token token=' + data.token;
 
+                sessionStorage.isLoggedIn = true;
                 sessionStorage.user = data.data.token;
             });
 

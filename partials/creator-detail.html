@@ -1,0 +1,17 @@
+
+<div data-ng-if="player.message">
+    <h1>{{creator.message}}</h1>
+</div>
+
+<div data-ng-if="!creator.message">
+    <h1>Information about the creator</h1>
+
+
+    <ul>
+        <li>Name: {{ creator.creatorList.username }}</li>
+        <li>Name: {{ creator.creatorList.email }}</li>
+        <li>Joined: {{ creator.creatorList.created_at.substring(0, 10) }}</li>
+
+    </ul>
+
+</div>

@@ -1,6 +1,6 @@
 app.factory('StoryService', StoryService);
 
-StoryService.$inject = ['ResourceService', '$q', '$rootScope'];
+StoryService.$inject = ['ResourceService', '$q'];
 
 function StoryService(ResourceService, $q) {
 

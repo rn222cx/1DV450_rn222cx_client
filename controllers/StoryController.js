@@ -1,6 +1,6 @@
 app.controller('StoryController', StoryController);
 
-StoryController.$inject = ['StoryService', '$scope', '$q'];
+StoryController.$inject = ['StoryService'];
 
 function StoryController(storyService){
 

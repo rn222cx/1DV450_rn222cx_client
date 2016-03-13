@@ -45,10 +45,13 @@
                 <td>{{ story.description.substring(0, 10) +"...";}}</td>
                 <td>{{ story.latitude}}</td>
                 <td>{{ story.longitude}}</td>
-                <td data-ng-repeat="(key, value) in story.tags">
-                    {{ value.name }}
+                <td>
+                    <span data-ng-repeat="(key, value) in story.tags">
+                        {{ value.name }}
+                    </span>
                 </td>
-                <!--<td>{{ story.previous_page }}</td>-->
+                <td><a data-ng-href="users/{{story.creator.username}}">More info</a></td>
+                <!--<td>{{ story.tags }}</td>-->
                 <td ng-show="$last">{{story.previous_page}}</td>
                 <td ng-show="$last">{{story.next_page}}</td>
 

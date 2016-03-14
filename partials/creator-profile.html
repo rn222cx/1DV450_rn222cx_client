@@ -1,0 +1,53 @@
+
+<ul>
+    <li>Name: {{ creatorList.username }}</li>
+    <li>Email: {{ creatorList.email }}</li>
+    <li>Joined: {{ creatorList.created_at.substring(0, 10) }}</li>
+</ul>
+
+
+
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Lat</th>
+        <th>Lon</th>
+        <th>Tag</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-ng-repeat="creator in creatorList.stories" ng-controller="StoryController">
+        <td>{{ creator.title }}
+            <br> <input ng-show="editorEnabled" ng-model="creator.title"></td>
+        <td>{{ creator.description }}
+            <br> <input ng-show="editorEnabled" ng-model="creator.description"></td>
+        <td>{{ creator.latitude}}
+            <br> <input ng-show="editorEnabled" ng-model="creator.latitude"></td>
+        <td>{{ creator.longitude}}
+            <br> <input ng-show="editorEnabled" ng-model="creator.longitude"></td>
+        <td>
+            <span data-ng-repeat="(key, creator) in creator.tags">
+                {{ creator.name }}
+            </span>
+            <br> <input ng-show="editorEnabled" ng-model="creator.name">
+        </td>
+        <td >
+            <a href="" ng-show="!editorEnabled" data-ng-click="removeStory(creator, $index)">Delete</a>
+            <a href="" ng-show="!editorEnabled" data-ng-click="enableEditor($index)">Edit</a>
+            <div class="edit-fields" ng-show="editorEnabled">
+                <a href="#" ng-click="save(creator)">Save</a>
+                or
+                <a href="#" ng-click="disableEditor()">cancel</a>.
+            </div>
+        </td>
+
+
+    </tr>
+    <div></div>
+    </tbody>
+
+</table>

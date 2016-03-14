@@ -21,6 +21,13 @@ function LoginController(authService, $scope){
         return false;
     };
 
+    $scope.getCreator = function() {
+        if(sessionStorage.user){
+            alert(sessionStorage.user);
+            return sessionStorage.user;
+        }
+    };
+
 
 }
 

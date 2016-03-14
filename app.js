@@ -8,12 +8,6 @@ app.config(function ($routeProvider, $locationProvider) {
                 templateUrl: 'partials/stories.html',
                 controllerAs: 'stories'
             })
-        //.when('/login',
-        //    {
-        //        controller: 'LoginController',
-        //       // templateUrl: 'partials/login.html'
-        //      //  controllerAs: 'login'
-        //    })
         .when('/stories',
             {
                 controller: 'SimpleController',
@@ -25,6 +19,12 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'partials/creator-detail.html',
             controllerAs: 'creator'
            })
+        .when('/profile',
+            {
+                controller: 'CreatorController',
+                templateUrl: 'partials/creator-profile.html',
+                controllerAs: 'creator'
+            })
         .otherwise({redirectTo: '/'});
 
     $locationProvider.html5Mode(true);

@@ -1,20 +1,24 @@
 app.controller('CreatorController', CreatorController);
 
-CreatorController.$inject = ['CreatorService'];
+CreatorController.$inject = ['CreatorService', '$scope'];
 
-function CreatorController(creatorService){
+function CreatorController(creatorService, $scope){
 
-    var vm = this;
+
     var userPromise = creatorService.getCreator();
 
     userPromise
         .then(function(data){
-            vm.creatorList = data.data;
+            $scope.creatorList = data.data;
+
         })
         .catch(function(error){
-            vm.message = error;
+            $scope.message = error;
             console.log("ERROR");
         });
+
+
+
 
 }
 

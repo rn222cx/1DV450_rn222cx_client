@@ -1,8 +1,8 @@
 app.controller('StoryController', StoryController);
 
-StoryController.$inject = ['StoryService'];
+StoryController.$inject = ['StoryService', '$scope'];
 
-function StoryController(storyService){
+function StoryController(storyService, $scope){
 
     var vm = this;
     var storyPromise = storyService.get();
@@ -37,6 +37,35 @@ function StoryController(storyService){
             });
     };
 
+    $scope.removeStory = function(id, index) {
+        storyService.removeStory(id.id)
+            .then(function(newData){
+                $scope.creatorList.stories.splice(index, 1);
+            })
+            .catch(function(error){
+                console.log(error)
+            });
+    };
+
+    $scope.enableEditor = function(index) {
+        $scope.editorEnabled = true;
+    };
+
+    $scope.disableEditor = function() {
+        $scope.editorEnabled = false;
+    };
+
+    $scope.save = function(data) {
+        storyService.updateStory(data)
+            .then(function(newData){
+                console.log(newData);
+            })
+            .catch(function(error){
+                console.log(error)
+            });
+
+        $scope.disableEditor();
+    };
 }
 
 

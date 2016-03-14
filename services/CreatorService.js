@@ -4,7 +4,7 @@ CreatorService.$inject = ['ResourceService', '$q', '$routeParams'];
 
 function CreatorService(ResourceService, $q, $routeParams) {
 
-    var creator = ResourceService('users/' + $routeParams.id);
+    var creator = ResourceService('users/' + sessionStorage.user);
 
 
     return {
@@ -16,8 +16,6 @@ function CreatorService(ResourceService, $q, $routeParams) {
             });
 
             return deferred.promise;
-
-
         }
 
     };

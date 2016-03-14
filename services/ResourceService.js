@@ -34,7 +34,6 @@ function ResourceService($http, API){
                 var result = [];
 
                 angular.forEach(response.data, function(value, key) {
-                    console.log(value);
                     result[key] = new Resource(value);
                 });
 
@@ -45,7 +44,6 @@ function ResourceService($http, API){
         };
 
         Resource.getSingle = function() {
-
             var request = {
                 method: 'GET',
                 url: API.url + collectionName,
@@ -59,7 +57,7 @@ function ResourceService($http, API){
             });
         };
 
-        Resource.save = function(collectionName, data, authToken){
+        Resource.save = function(data, authToken){
             var request = {
                 method: 'POST',
                 url: API.url + collectionName,
@@ -69,6 +67,42 @@ function ResourceService($http, API){
                     'Accept': API.format,
                 },
                 data: data
+            };
+            return $http(request).then(function(response) {
+                return new Resource(response);
+            });
+
+        };
+
+        Resource.update = function(data, id, authToken){
+            console.log(data);
+            var request = {
+                method: 'PUT',
+                url: API.url + collectionName + id,
+                headers: {
+                    'Api-Key': API.key,
+                    'Authorization': authToken,
+                    'Accept': API.format,
+                },
+                data: data
+            };
+            return $http(request).then(function(response) {
+                console.log(response)
+                return new Resource(response);
+            });
+
+        };
+
+        Resource.remove = function(id, authToken){
+            var request = {
+                method: 'DELETE',
+                url: API.url + collectionName + id,
+                headers: {
+                    'Api-Key': API.key,
+                    'Authorization': authToken,
+                    'Accept': API.format,
+                },
+
             };
             return $http(request).then(function(response) {
                 return new Resource(response);

@@ -2,7 +2,7 @@
 
 
 
-<form name="addStory" data-ng-submit="stories.searchStories(data)">
+<form data-ng-submit="stories.searchStories(data)">
     <input type="text" data-ng-model="data.searches" placeholder="Search" >
     <input type="text" data-ng-model="data.limit" placeholder="Limit" >
     <input type="text" data-ng-model="data.offset" placeholder="Offset" >
@@ -11,7 +11,7 @@
     <button type="submit" class="button">Search</button>
 </form>
 
-<form name="addStory" data-ng-submit="stories.createStory(data)">
+<form ng-controller="LoginController" data-ng-hide="!isUserLoggedIn()" data-ng-submit="stories.createStory(data)">
     <input type="text" data-ng-model="data.title" placeholder="Title" >
     <input type="text" data-ng-model="data.description" placeholder="Description">
     <input type="text" data-ng-model="data.address" placeholder="Address">

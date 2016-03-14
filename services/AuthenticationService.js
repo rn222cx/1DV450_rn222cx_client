@@ -18,7 +18,8 @@ function AuthenticationService(ResourceService, $q) {
                 deferred.resolve(data);
 
                 sessionStorage.isLoggedIn = true;
-                sessionStorage.user = data.data.token;
+                sessionStorage.token = data.data.token;
+                sessionStorage.user = data.data.username;
             });
 
             return deferred.promise;

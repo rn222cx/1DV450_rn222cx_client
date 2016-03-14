@@ -2,9 +2,7 @@
     <div class="container-fluid" ng-controller="LoginController">
         <div class="navbar-header">
             <a class="navbar-brand" data-ng-href=".">Home</a>
-            <a class="navbar-brand" data-ng-href="stories">Stories</a>
-
-
+            <a class="navbar-brand" data-ng-hide="!isUserLoggedIn()" data-ng-href="profile">Profile</a>
         </div>
         <a href="" class="navbar-brand float-right" data-ng-hide="!isUserLoggedIn()" ng-click="logout()" >Log Out</a>
         <form data-ng-hide="isUserLoggedIn()" data-ng-submit="login(data)" class="navbar-brand float-right">

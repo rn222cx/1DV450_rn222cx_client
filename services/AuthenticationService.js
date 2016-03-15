@@ -14,7 +14,7 @@ function AuthenticationService(ResourceService, $q) {
             var encodedCredentials = btoa(data.email+':'+data.password);
             var credential = 'Basic ' + encodedCredentials
 
-            story.save('token', data, credential).then(function (data) {
+            story.save(data, credential).then(function (data) {
                 deferred.resolve(data);
 
                 sessionStorage.isLoggedIn = true;

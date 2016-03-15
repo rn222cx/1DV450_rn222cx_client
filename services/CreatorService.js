@@ -1,8 +1,8 @@
 app.factory('CreatorService', CreatorService);
 
-CreatorService.$inject = ['ResourceService', '$q', '$routeParams'];
+CreatorService.$inject = ['ResourceService', '$q'];
 
-function CreatorService(ResourceService, $q, $routeParams) {
+function CreatorService(ResourceService, $q) {
 
     var creator = ResourceService('users/' + sessionStorage.user);
 

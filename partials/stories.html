@@ -1,62 +1,59 @@
-<h2>Stories</h2>
 
-
-
-<form data-ng-submit="stories.searchStories(data)">
-    <input type="text" data-ng-model="data.searches" placeholder="Search" >
-    <input type="text" data-ng-model="data.limit" placeholder="Limit" >
-    <input type="text" data-ng-model="data.offset" placeholder="Offset" >
-    <input type="text" data-ng-model="data.tag" placeholder="Tag" >
-    <input type="text" data-ng-model="data.location" placeholder="Location" >
-    <button type="submit" class="button">Search</button>
+<!--Search form-->
+<form class="form-inline" data-ng-submit="stories.searchStories(data)">
+    <input class="form-control" type="text" data-ng-model="data.searches" placeholder="Search" >
+    <input class="form-control" type="text" data-ng-model="data.limit" placeholder="Limit" >
+    <input class="form-control" type="text" data-ng-model="data.offset" placeholder="Offset" >
+    <input class="form-control" type="text" data-ng-model="data.tag" placeholder="Tag" >
+    <input class="form-control" type="text" data-ng-model="data.location" placeholder="Location" >
+    <button type="submit" class="btn btn-primary">Search</button>
 </form>
 
-<form ng-controller="LoginController" data-ng-hide="!isUserLoggedIn()" data-ng-submit="stories.createStory(data)">
-    <input type="text" data-ng-model="data.title" placeholder="Title" >
-    <input type="text" data-ng-model="data.description" placeholder="Description">
-    <input type="text" data-ng-model="data.address" placeholder="Address">
-    <input type="text" data-ng-model="data.latitude" placeholder="Latitude">
-    <input type="text" data-ng-model="data.longitude" placeholder="Longitude">
-    <input type="text" data-ng-model="data.tags" placeholder="Tags">
-    <button type="submit" class="button">Create</button>
+<!--Create new story form-->
+<form class="form-inline" ng-controller="LoginController" data-ng-hide="!isUserLoggedIn()" data-ng-submit="stories.createStory(data)">
+    <input class="form-control" type="text" data-ng-model="data.title" required placeholder="Title" >
+    <input class="form-control" type="text" data-ng-model="data.description" required placeholder="Description">
+    <input class="form-control" type="text" data-ng-model="data.address" required placeholder="Address">
+    <input class="form-control" type="text" data-ng-model="data.latitude" placeholder="Latitude">
+    <input class="form-control" type="text" data-ng-model="data.longitude" placeholder="Longitude">
+    <input class="form-control" type="text" data-ng-model="data.tags" placeholder="Tags">
+    <button type="submit" class="btn btn-primary">Create</button>
 </form>
 
-
+<!--The map directive-->
 <story-map></story-map>
 
+<h3>List all stories</h3>
 
-<map-div id="googleMap" style="width:75%;height:75%;"></map-div>
-    <h3>List all stories</h3>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Place</th>
+        <th>Lat</th>
+        <th>Lon</th>
+        <th>Tag</th>
+    </tr>
+    </thead>
 
-        <table class="table" style="width: 100%;">
-            <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Lat</th>
-                <th>Lon</th>
-                <th>Tag</th>
+    <tbody>
+    <tr data-ng-repeat="story in stories.storyList track by $index">
+        <td>{{ story.title }}</td>
+        <td>{{ story.description }}</td>
+        <td>{{ story.address }}</td>
+        <td>{{ story.latitude}}</td>
+        <td>{{ story.longitude}}</td>
+        <td>
+            <span data-ng-repeat="(key, value) in story.tags">
+                {{ value.name }}
+            </span>
+        </td>
+        <td><a data-ng-href="users/{{story.creator.username}}">More info</a></td>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr data-ng-repeat="story in stories.storyList track by $index">
-                <td>{{ story.title }}</td>
-                <td>{{ story.description.substring(0, 10) +"...";}}</td>
-                <td>{{ story.latitude}}</td>
-                <td>{{ story.longitude}}</td>
-                <td>
-                    <span data-ng-repeat="(key, value) in story.tags">
-                        {{ value.name }}
-                    </span>
-                </td>
-                <td><a data-ng-href="users/{{story.creator.username}}">More info</a></td>
-                <!--<td>{{ story.tags }}</td>-->
-                <td ng-show="$last">{{story.previous_page}}</td>
-                <td ng-show="$last">{{story.next_page}}</td>
-
-            </tr>
-            <div></div>
-            </tbody>
-
-        </table>
+        <td ng-show="$last">{{story.previous_page}}</td>
+        <td ng-show="$last">{{story.next_page}}</td>
+    </tr>
+    <div></div>
+    </tbody>
+</table>

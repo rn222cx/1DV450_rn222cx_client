@@ -17,3 +17,9 @@ body {margin:6px;}
     text-align: center;
     padding: 6px;
 }
+
+.paginate{
+    cursor: pointer;
+    text-align: center;
+}
+

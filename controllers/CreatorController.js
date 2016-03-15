@@ -5,15 +5,16 @@ CreatorController.$inject = ['CreatorService', '$routeParams', 'Flash'];
 function CreatorController(creatorService, $routeParams, Flash){
 
     var vm = this;
-    var userPromise = creatorService.getCreator($routeParams.id);
+    var userPromise = creatorService.getCreator(sessionStorage.user);
 
     userPromise
         .then(function(data){
-            vm.creatorDetails = data.data;
-        })
-        .catch(function(){
-            var message = '<strong> Ohps!</strong> Could not find user.';
-            Flash.create('danger', message, 5000, true);
+            if(!data) // if no data from api is fetched
+            {
+                var message = '<strong> Oh no!</strong> Could not get data from server.';
+                Flash.create('danger', message, 0, true);
+            }
+            vm.creatorList = data.data;
         });
 
 }

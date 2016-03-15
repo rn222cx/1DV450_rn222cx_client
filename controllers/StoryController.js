@@ -9,12 +9,14 @@ function StoryController(storyService, $scope, Flash){
 
     storyPromise
         .then(function(data){
+            if(!data) // if no data from api is fetched
+            {
+                var message = '<strong> Oh no!</strong> Could not get data from server.';
+                Flash.create('danger', message, 0, true);
+            }
             vm.storyList = data;
         })
-        .catch(function(error){
-            vm.storyList = error;
-            console.log("ERROR");
-        });
+
 
     vm.searchStories = function(data) {
         storyService.searchStories(data)
@@ -73,6 +75,13 @@ function StoryController(storyService, $scope, Flash){
             });
 
         $scope.disableEditor();
+    };
+
+    $scope.paginate = function(data) {
+        storyService.paginate(data)
+            .then(function(newData){
+                vm.storyList = newData.data;
+            })
     };
 }
 

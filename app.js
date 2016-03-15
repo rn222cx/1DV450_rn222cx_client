@@ -8,17 +8,15 @@ app.config(function ($routeProvider, $locationProvider) {
                 templateUrl: 'partials/stories.html',
                 controllerAs: 'stories'
             })
-        .when('/users/:id',
-            {
-            controller: 'CreatorController',
-            templateUrl: 'partials/creator-detail.html',
-            controllerAs: 'creator'
-           })
         .when('/profile',
             {
                 controller: 'CreatorController',
                 templateUrl: 'partials/creator-profile.html',
                 controllerAs: 'creator'
+            })
+        .when('/users/:id',
+            {
+                template: '<show-creator></show-creator>',
             })
         .otherwise({redirectTo: '/'});
 

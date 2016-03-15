@@ -27,7 +27,6 @@ function ResourceService($http, API){
                     'tag':    data.tag,
                     'location': data.location
                 }
-
             };
 
             return $http(request).then(function(response) {
@@ -44,16 +43,15 @@ function ResourceService($http, API){
 
         };
 
-        Resource.getSingle = function(id) {
+        Resource.getSingle = function(useriID) {
             var request = {
                 method: 'GET',
-                url: API.url + collectionName + id,
+                url: API.url + collectionName + useriID,
                 headers: {
                     'Api-Key': API.key
                 }
             };
-            console.log(API.url + collectionName + id);
-            return $http(request).success(function(response) {
+            return $http(request).then(function(response) {
                 return response;
             })
             .catch(function(data, status) {});
@@ -112,6 +110,21 @@ function ResourceService($http, API){
             })
             .catch(function(data, status) {});
 
+        };
+
+        Resource.paginate = function(url) {
+            console.log(url);
+            var request = {
+                method: 'GET',
+                url: url,
+                headers: {
+                    'Api-Key': API.key
+                }
+            };
+            return $http(request).success(function(response) {
+                return response;
+            })
+            .catch(function(data, status) {});
         };
 
         return Resource;

@@ -107,7 +107,17 @@ function StoryService(ResourceService, $q) {
             });
 
             return deferred.promise;
-        }
+        },
+
+        paginate: function (data) {
+
+            var deferred = $q.defer();
+            story.paginate(data).then(function (data) {
+                deferred.resolve(data);
+            });
+
+            return deferred.promise;
+        },
 
     };
 }

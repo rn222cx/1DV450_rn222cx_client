@@ -1,53 +1,53 @@
 
-    <h4>Username: {{ creatorList.username }}</h4>
-    <h4>Email: {{ creatorList.email }}</h4>
-    <h4>Joined: {{ creatorList.created_at.substring(0, 10) }}</h4>
-
+    <h4>Name: {{ creator.creatorList.username }}</h4>
+    <h4>Email: {{ creator.creatorList.email }}</h4>
+    <h4>Joined: {{ creator.creatorList.created_at.substring(0, 10) }}</h4>
 
 <table class="table table-striped">
     <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Place</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th>Tags</th>
-        </tr>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Place</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Tags</th>
+    </tr>
     </thead>
     <tbody>
-        <tr data-ng-repeat="creator in creatorList.stories" ng-controller="StoryController">
-            <td>{{ creator.title }}
-                <br> <input ng-show="editorEnabled" ng-model="creator.title">
-            </td>
-            <td>{{ creator.description }}
-                <br> <input ng-show="editorEnabled" ng-model="creator.description">
-            </td>
-            <td>{{ creator.address}}
-                <br> <input ng-show="editorEnabled" ng-model="creator.address">
-            </td>
-            <td>{{ creator.latitude}}
-                <br> <input ng-show="editorEnabled" ng-model="creator.latitude">
-            </td>
-            <td>{{ creator.longitude}}
-                <br> <input ng-show="editorEnabled" ng-model="creator.longitude">
-            </td>
-            <td>
-                <span data-ng-repeat="(key, creator) in creator.tags">
-                    {{ creator.name }}
-                </span>
-                <br> <input ng-show="editorEnabled" placeholder="seperate with comma" ng-model="creator.name">
-            </td>
-            <td >
-                <a href="" ng-show="!editorEnabled" data-ng-click="removeStory(creator, $index)">Delete</a>
-                <a href="" ng-show="!editorEnabled" data-ng-click="enableEditor($index)">Edit</a>
-                <div class="edit-fields" ng-show="editorEnabled">
-                    <a href="#" ng-click="save(creator)">Save</a>
-                    or
-                    <a href="#" ng-click="disableEditor()">cancel</a>.
-                </div>
-            </td>
+    <tr data-ng-repeat="creator in creator.creatorList.stories" ng-controller="StoryController">
+        <td>{{ creator.title }}
+            <br> <input ng-show="editorEnabled" ng-model="creator.title">
+        </td>
+        <td>{{ creator.description }}
+            <br> <input ng-show="editorEnabled" ng-model="creator.description">
+        </td>
+        <td>{{ creator.address}}
+            <br> <input ng-show="editorEnabled" ng-model="creator.address">
+        </td>
+        <td>{{ creator.latitude}}
+            <br> <input ng-show="editorEnabled" ng-model="creator.latitude">
+        </td>
+        <td>{{ creator.longitude}}
+            <br> <input ng-show="editorEnabled" ng-model="creator.longitude">
+        </td>
+        <td>
+            <span data-ng-repeat="(key, creator) in creator.tags">
+                {{ creator.name }}
+            </span>
+            <br> <input ng-show="editorEnabled" placeholder="seperate with comma" ng-model="creator.name">
+        </td>
+        <td >
+            <a href="" ng-show="!editorEnabled" data-ng-click="removeStory(creator, $index)">Delete</a>
+            <a href="" ng-show="!editorEnabled" data-ng-click="enableEditor($index)">Edit</a>
+            <div class="edit-fields" ng-show="editorEnabled">
+                <a href="#" ng-click="save(creator)">Save</a>
+                or
+                <a href="#" ng-click="disableEditor()">cancel</a>.
+            </div>
+        </td>
 
-        </tr>
+    </tr>
     </tbody>
+
 </table>

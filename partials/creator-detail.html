@@ -1,17 +1,34 @@
 
-<div data-ng-if="player.message">
-    <h1>{{creator.message}}</h1>
-</div>
+<h4>Username: {{ creator.creatorDetails.username }}</h4>
+<h4>Email: {{ creator.creatorDetails.email }}</h4>
+<h4>Joined: {{ creator.creatorDetails.created_at.substring(0, 10) }}</h4>
 
-<div data-ng-if="!creator.message">
-    <h1>Information about the creator</h1>
+<h2 class="text-center">Stories that is created by {{ creator.creatorDetails.username }} </h2>
 
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Place</th>
+            <th>Lat</th>
+            <th>Lon</th>
+            <th>Tags</th>
+        </tr>
+    </thead>
 
-    <ul>
-        <li>Name: {{ creator.creatorList.username }}</li>
-        <li>Email: {{ creator.creatorList.email }}</li>
-        <li>Joined: {{ creator.creatorList.created_at.substring(0, 10) }}</li>
-
-    </ul>
-
-</div>
+    <tbody>
+        <tr data-ng-repeat="story in creator.creatorDetails.stories track by $index">
+            <td>{{ story.title }}</td>
+            <td>{{ story.description }}</td>
+            <td>{{ story.address }}</td>
+            <td>{{ story.latitude}}</td>
+            <td>{{ story.longitude}}</td>
+            <td>
+            <span data-ng-repeat="(key, value) in story.tags">
+                {{ value.name }}
+            </span>
+            </td>
+        </tr>
+    </tbody>
+</table>

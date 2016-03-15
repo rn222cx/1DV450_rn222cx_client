@@ -38,23 +38,25 @@ function ResourceService($http, API){
                 });
 
                 return result;
-            });
+            })
+            .catch(function(data, status) {});
 
 
         };
 
-        Resource.getSingle = function() {
+        Resource.getSingle = function(id) {
             var request = {
                 method: 'GET',
-                url: API.url + collectionName,
+                url: API.url + collectionName + id,
                 headers: {
                     'Api-Key': API.key
                 }
             };
-
+            console.log(API.url + collectionName + id);
             return $http(request).success(function(response) {
                 return response;
-            });
+            })
+            .catch(function(data, status) {});
         };
 
         Resource.save = function(data, authToken){
@@ -70,7 +72,8 @@ function ResourceService($http, API){
             };
             return $http(request).then(function(response) {
                 return new Resource(response);
-            });
+            })
+            .catch(function(data, status) {});
 
         };
 
@@ -87,9 +90,9 @@ function ResourceService($http, API){
                 data: data
             };
             return $http(request).then(function(response) {
-                console.log(response)
                 return new Resource(response);
-            });
+            })
+            .catch(function(data, status) {});
 
         };
 
@@ -106,7 +109,8 @@ function ResourceService($http, API){
             };
             return $http(request).then(function(response) {
                 return new Resource(response);
-            });
+            })
+            .catch(function(data, status) {});
 
         };
 

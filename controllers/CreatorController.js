@@ -1,24 +1,20 @@
 app.controller('CreatorController', CreatorController);
 
-CreatorController.$inject = ['CreatorService', '$scope'];
+CreatorController.$inject = ['CreatorService', '$routeParams', 'Flash'];
 
-function CreatorController(creatorService, $scope){
+function CreatorController(creatorService, $routeParams, Flash){
 
-
-    var userPromise = creatorService.getCreator();
+    var vm = this;
+    var userPromise = creatorService.getCreator($routeParams.id);
 
     userPromise
         .then(function(data){
-            $scope.creatorList = data.data;
-
+            vm.creatorDetails = data.data;
         })
-        .catch(function(error){
-            $scope.message = error;
-            console.log("ERROR");
+        .catch(function(){
+            var message = '<strong> Ohps!</strong> Could not find user.';
+            Flash.create('danger', message, 5000, true);
         });
-
-
-
 
 }
 

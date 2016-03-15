@@ -1,8 +1,8 @@
 app.controller('StoryController', StoryController);
 
-StoryController.$inject = ['StoryService', '$scope'];
+StoryController.$inject = ['StoryService', '$scope', 'Flash'];
 
-function StoryController(storyService, $scope){
+function StoryController(storyService, $scope, Flash){
 
     var vm = this;
     var storyPromise = storyService.get();
@@ -21,9 +21,9 @@ function StoryController(storyService, $scope){
             .then(function(newData){
                 vm.storyList = newData;
             })
-            .catch(function(error){
-                vm.storyList = error;
-                console.log("ERROR");
+            .catch(function(){
+                var message = '<strong> Ohps!</strong> Could not do the search.';
+                Flash.create('danger', message, 5000, true);
             });
     };
 
@@ -31,23 +31,29 @@ function StoryController(storyService, $scope){
         storyService.saveStory(data)
             .then(function(newData){
                 vm.storyList.unshift(newData.config.data.story);
+                var message = '<strong> Well done!</strong> You successfully created this important story.';
+                Flash.create('success', message, 5000, true);
             })
             .catch(function(error){
-                console.log(error)
+                var message = '<strong> Ohps!</strong> Your story did not create.';
+                Flash.create('danger', message, 5000, true);
             });
     };
 
     $scope.removeStory = function(id, index) {
         storyService.removeStory(id.id)
-            .then(function(newData){
+            .then(function(){
                 $scope.creatorList.stories.splice(index, 1);
+                var message = '<strong> Well done!</strong> You will never see that story anymore.';
+                Flash.create('success', message, 5000, true);
             })
             .catch(function(error){
-                console.log(error)
+                var message = '<strong> Ohps!</strong> Story did not delete.';
+                Flash.create('danger', message, 5000, true);
             });
     };
 
-    $scope.enableEditor = function(index) {
+    $scope.enableEditor = function() {
         $scope.editorEnabled = true;
     };
 
@@ -58,10 +64,12 @@ function StoryController(storyService, $scope){
     $scope.save = function(data) {
         storyService.updateStory(data)
             .then(function(newData){
-                console.log(newData);
+                var message = '<strong> Awesome!</strong> Story is updated.';
+                Flash.create('success', message, 5000, true);
             })
             .catch(function(error){
-                console.log(error)
+                var message = '<strong> Ohps!</strong> Story did not update.';
+                Flash.create('danger', message, 5000, true);
             });
 
         $scope.disableEditor();

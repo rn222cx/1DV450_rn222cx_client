@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'ngMap']);
+var app = angular.module('app', ['ngRoute', 'ngMap', 'ngFlash']);
 
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -7,11 +7,6 @@ app.config(function ($routeProvider, $locationProvider) {
                 controller: 'StoryController',
                 templateUrl: 'partials/stories.html',
                 controllerAs: 'stories'
-            })
-        .when('/stories',
-            {
-                controller: 'SimpleController',
-                templateUrl: 'partials/view1.html'
             })
         .when('/users/:id',
             {

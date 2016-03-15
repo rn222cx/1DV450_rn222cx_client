@@ -4,14 +4,14 @@ CreatorService.$inject = ['ResourceService', '$q'];
 
 function CreatorService(ResourceService, $q) {
 
-    var creator = ResourceService('users/' + sessionStorage.user);
+    var creator = ResourceService('users/');
 
 
     return {
-        getCreator: function () {
+        getCreator: function (id) {
 
             var deferred = $q.defer();
-            creator.getSingle().then(function (data) {
+            creator.getSingle(id).then(function (data) {
                 deferred.resolve(data);
             });
 

@@ -12,9 +12,9 @@ email: admin<span></span>@creator.com
 password: 1234  
 
 username: john  
-email: john@test.com  
+email: john<span></span>@test.com  
 password: 1234  
 
 username: johan  
-email: johan@test.com  
+email: johan<span></span>@test.com  
 password: 1234  

@@ -3,7 +3,7 @@
 Url to client application: http://45.55.147.164/client/  
 Url to github api application: https://github.com/rn222cx/1DV450_rn222cx
 
-The applications purpose is to write completely unnecessary stories that will be placed on a map
+The applications purpose is to write short unnecessary stories that will be placed on a map
 
 No registration, the users are hardcoded.
 

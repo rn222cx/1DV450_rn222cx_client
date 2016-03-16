@@ -10,6 +10,7 @@ function CreatorService(ResourceService, $q) {
         getCreator: function (useriID) {
 
             var deferred = $q.defer();
+
             creator.getSingle(useriID).then(function (data) {
                 deferred.resolve(data);
             });

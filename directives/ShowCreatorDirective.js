@@ -5,7 +5,7 @@ app.controller('ShowCreatorController', ['CreatorService', '$routeParams', '$sco
 
         userPromise
             .then(function(data){
-                $scope.creatorDetails = data.data;
+                $scope.creatorDetails = data.data; // List with information about the chosen creator
             })
             .catch(function(){
                 var message = '<strong> Ohps!</strong> Could not find user.';

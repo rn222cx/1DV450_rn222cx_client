@@ -36,21 +36,20 @@
             <th>Tag</th>
         </tr>
     </thead>
-
     <tbody>
-    <tr data-ng-repeat="story in stories.storyList track by $index">
-        <td>{{ story.title }}</td>
-        <td>{{ story.description }}</td>
-        <td>{{ story.address }}</td>
-        <td>{{ story.latitude}}</td>
-        <td>{{ story.longitude}}</td>
-        <td>
-            <span data-ng-repeat="(key, value) in story.tags">
-                {{ value.name }}
-            </span>
-        </td>
-        <td><a data-ng-href="users/{{story.creator.username}}">More info</a></td>
-    </tr>
+        <tr data-ng-repeat="story in stories.storyList track by $index">
+            <td>{{ story.title }}</td>
+            <td>{{ story.description }}</td>
+            <td>{{ story.address }}</td>
+            <td>{{ story.latitude}}</td>
+            <td>{{ story.longitude}}</td>
+            <td>
+                <span data-ng-repeat="(key, value) in story.tags">
+                    {{ value.name }}
+                </span>
+            </td>
+            <td><a data-ng-href="users/{{story.creator.username}}">More info</a></td>
+        </tr>
     </tbody>
 </table>
 

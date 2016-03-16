@@ -4,7 +4,7 @@ app.controller('mapController', function($scope, NgMap) {
         $scope.map = map;
     });
 
-    // Show popup window
+    // Show popup info window
     $scope.showStory = function(event, place) {
         $scope.selectedPlace = place;
         $scope.map.showInfoWindow('InfoWindow', this);

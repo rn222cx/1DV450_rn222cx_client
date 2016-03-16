@@ -6,7 +6,6 @@ function AuthenticationService(ResourceService, $q) {
 
     var story = ResourceService('token');
 
-
     return {
         auth: function (data) {
             var deferred = $q.defer();
@@ -17,6 +16,7 @@ function AuthenticationService(ResourceService, $q) {
             story.save(data, credential).then(function (data) {
                 deferred.resolve(data);
 
+                // Save data in session storage
                 sessionStorage.isLoggedIn = true;
                 sessionStorage.token = data.data.token;
                 sessionStorage.user = data.data.username;

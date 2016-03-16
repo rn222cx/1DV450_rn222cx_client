@@ -23,3 +23,6 @@ body {margin:6px;}
     text-align: center;
 }
 
+.hover-link{
+    cursor: pointer;
+}

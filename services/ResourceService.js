@@ -76,7 +76,6 @@ function ResourceService($http, API){
         };
 
         Resource.update = function(data, id, authToken){
-            console.log(data);
             var request = {
                 method: 'PUT',
                 url: API.url + collectionName + id,
@@ -108,7 +107,7 @@ function ResourceService($http, API){
             return $http(request).then(function(response) {
                 return new Resource(response);
             })
-            .catch(function(data, status) {});
+            .catch(function() {});
 
         };
 
@@ -121,7 +120,7 @@ function ResourceService($http, API){
                     'Api-Key': API.key
                 }
             };
-            return $http(request).success(function(response) {
+            return $http(request).then(function(response) {
                 return response;
             })
             .catch(function(data, status) {});

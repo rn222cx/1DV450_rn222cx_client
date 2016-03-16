@@ -6,7 +6,6 @@ function StoryService(ResourceService, $q) {
 
     var story = ResourceService('stories/');
 
-
     return {
         get: function () {
             var deferred = $q.defer();
@@ -18,7 +17,6 @@ function StoryService(ResourceService, $q) {
         },
 
         searchStories: function (data) {
-
             var deferred = $q.defer();
             story.getCollection(data).then(function (data) {
                 deferred.resolve(data);
@@ -32,18 +30,6 @@ function StoryService(ResourceService, $q) {
             // Get auth token from session storage
             var authToken = 'Token token=' + sessionStorage.token;
 
-            // if tags are present
-            if(data.tags){
-                var cleanTags = data.tags.replace(/\s+/g, ''); // Remove whitespace from tags
-                var tags = cleanTags.split(",");
-
-                var tagsArr = [];
-
-                tags.forEach(function(entry) {
-                    tagsArr.push({"name": entry});
-                });
-            }
-
             data = {
                 "story": {
                     "title": data.title,
@@ -51,7 +37,7 @@ function StoryService(ResourceService, $q) {
                     "address":data.address,
                     "longitude": data.longitude,
                     "latitude": data.latitude,
-                    "tags":tagsArr
+                    "tags": this.tags(data.tags)
                 }
             };
 
@@ -79,17 +65,6 @@ function StoryService(ResourceService, $q) {
             // Get auth token from session storage
             var authToken = 'Token token=' + sessionStorage.token;
             var storyID = data.id
-            // if tags are present
-            if(data.name){
-                var cleanTags = data.name.replace(/\s+/g, ''); // Remove whitespace from tags
-                var tags = cleanTags.split(",");
-
-                var tagsArr = [];
-
-                tags.forEach(function(entry) {
-                    tagsArr.push({"name": entry});
-                });
-            }
 
             data = {
                 "story": {
@@ -98,7 +73,7 @@ function StoryService(ResourceService, $q) {
                     "address":data.address,
                     "longitude": data.longitude,
                     "latitude": data.latitude,
-                    "tags":tagsArr
+                    "tags": this.tags(data.name)
                 }
             };
 
@@ -110,13 +85,26 @@ function StoryService(ResourceService, $q) {
         },
 
         paginate: function (data) {
-
             var deferred = $q.defer();
             story.paginate(data).then(function (data) {
                 deferred.resolve(data);
             });
 
             return deferred.promise;
+        },
+
+        // Give tags correct format in an array
+        tags: function (data) {
+            var cleanTags = data.replace(/\s+/g, ''); // Remove whitespace from tags
+            var tags = cleanTags.split(",");
+
+            var tagsArr = [];
+
+            tags.forEach(function(entry) {
+                tagsArr.push({"name": entry});
+            });
+
+            return tagsArr
         },
 
     };

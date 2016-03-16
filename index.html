@@ -6,22 +6,23 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="resources/css/angular-flash.min.css" />
-    <link rel="stylesheet" href="resources/main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
-    <script src="https://code.angularjs.org/1.2.0rc1/angular-route.js"></script>
-    <script src="resources/js/angular-flash.min.js"></script>
+    <link rel="stylesheet" href="resources/css/main.css">
 
 </head>
 <body>
 
-    <div data-ng-include src="'partials/shared/menu.html'"></div>
+    <div data-ng-include src="'partials/shared/menu.html'"></div> <!-- Header navigation menu-->
 
     <flash-message duration="5000" show-close="true" on-dismiss="myCallback(flash)" ></flash-message>
 
     <div data-ng-view></div>
 
-
+    <!-- Include scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <script src="https://code.angularjs.org/1.2.0rc1/angular-route.js"></script>
+    <script src="resources/js/angular-flash.min.js"></script>
     <script src="app.js"></script>
+
     <script src="services/StoryService.js"></script>
     <script src="services/CreatorService.js"></script>
     <script src="services/ResourceService.js"></script>
@@ -30,12 +31,11 @@
     <script src="controllers/StoryController.js"></script>
     <script src="controllers/CreatorController.js"></script>
     <script src="controllers/LoginController.js"></script>
+
     <script src="directives/MapDirective.js"></script>
     <script src="directives/ShowCreatorDirective.js"></script>
-
-    <script src="resources/ng-map.min.js"></script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmaPG9255LaIuuqvNtWzK9SkIpLy_MA6o">
-    </script>
+    
+    <script src="resources/js/ng-map.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmaPG9255LaIuuqvNtWzK9SkIpLy_MA6o"></script>
 </body>
 </html>

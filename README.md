@@ -8,7 +8,7 @@ No registration, the users are hardcoded.
 ### Users
 
 username: admin  
-email: admin@creator.com  
+email: admin<span></span>@creator.com  
 password: 1234  
 
 username: john  

@@ -24,8 +24,8 @@ app.config(function ($routeProvider, $locationProvider) {
 
 })
 .constant('API', { // key on client not good but ok for now
-    'key'   : "Ox5+5Ow9950Q0LhUaGUvfcKEvCU8YKUcZCGej3DxszQkGEzSJ1Kv/ORDfaRekgFsboa2j4XkmkXIkuRPOwOV/Q==",
-    'url'   : "http://api.ruby_api.dev/", // base url
+    'key'   : "tgofbvP1bJbzy0/heJArka+LtkQ/4J3PtcPK+/VAJaHi7OZqJ7S7FC2pBO4ewx4uHY/u5UZgtm2/iRhNlD4kPw==",
+    'url'   : "https://ancient-savannah-60021.herokuapp.com/api/", // base url
     'format': 'application/json' // Default format
 });
 

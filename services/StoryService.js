@@ -95,6 +95,9 @@ function StoryService(ResourceService, $q) {
 
         // Give tags correct format in an array
         tags: function (data) {
+            if(!data) {
+                return null;
+            }
             var cleanTags = data.replace(/\s+/g, ''); // Remove whitespace from tags
             var tags = cleanTags.split(",");
 

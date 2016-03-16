@@ -112,7 +112,6 @@ function ResourceService($http, API){
         };
 
         Resource.paginate = function(url) {
-            console.log(url);
             var request = {
                 method: 'GET',
                 url: url,

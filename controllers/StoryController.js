@@ -54,16 +54,18 @@ function StoryController(storyService, $scope, Flash){
     /////////////////////////////////////////
 
     $scope.removeStory = function(id, index) {
-        storyService.removeStory(id.id)
-            .then(function(){
-                $scope.creatorList.stories.splice(index, 1); // Remove story from list
-                var message = '<strong> Well done!</strong> You will never see that story anymore.';
-                Flash.create('success', message, 5000, true);
-            })
-            .catch(function(){
-                var message = '<strong> Ohps!</strong> Story did not delete.';
-                Flash.create('danger', message, 5000, true);
-            });
+        if (confirm("Are you sure to delete this story?")) {
+            storyService.removeStory(id.id)
+                .then(function(){
+                    $scope.creatorList.stories.splice(index, 1); // Remove story from list
+                    var message = '<strong> Well done!</strong> You will never see that story anymore.';
+                    Flash.create('success', message, 5000, true);
+                })
+                .catch(function(){
+                    var message = '<strong> Ohps!</strong> Story did not delete.';
+                    Flash.create('danger', message, 5000, true);
+                });
+         }
     };
 
     $scope.enableEditor = function() { // Enable editing mode in lists

@@ -3,6 +3,8 @@
 <h4>Email: {{ creatorList.email }}</h4>
 <h4>Joined: {{ creatorList.created_at.substring(0, 10) }}</h4>
 
+<h2 class="text-center">List of stories that is created by you</h2>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -38,7 +40,7 @@
                 <br> <input ng-show="editorEnabled" placeholder="seperate with comma" ng-model="creator.name">
             </td>
             <td class="hover-link">
-                <a ng-show="!editorEnabled" data-ng-click="removeStory(creator, $index)">Delete</a>
+                <a data-ng-click="removeStory(creator, $index)">Delete</a>
                 <a ng-show="!editorEnabled" data-ng-click="enableEditor($index)">Edit</a>
                 <div class="edit-fields" ng-show="editorEnabled">
                     <a ng-click="save(creator)">Save</a>

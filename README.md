@@ -22,5 +22,5 @@ email: johan<span></span>@test.com
 password: 1234  
 
 #### Have in mind
-The place field generates latitude and longitude but it needs a page reload to see the effect.
+The place field generates latitude and longitude but it needs a page reload to see the effect.  
 When edit tags it only ads tags and do not remove the old ones.

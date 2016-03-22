@@ -24,3 +24,8 @@ password: 1234
 #### Have in mind
 The place field generates latitude and longitude but it needs a page reload to see the effect.  
 When edit tags it only ads tags and do not remove the old ones.
+
+### Changes in the api
+* Changed the token request when login to a POST request from a GET.
+* Added `.present?` in my search params beckause searches reacted on blank searches.
+* Added creators and changed owner of stories to creators instead of users (planned to do this in the last laboration).

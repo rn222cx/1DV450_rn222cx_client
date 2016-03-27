@@ -1,7 +1,7 @@
 # 1DV450_rn222cx_client
 
-~~Url to client application: http://45.55.147.164/client/~~
-Client is moved to http://trollet.net/client/  
+~~Url to client application: http://45.55.147.164/client/~~  
+Client is moved to http://trollet.net/client/ (Obs not tested)
 
 Url to api repo: https://github.com/rn222cx/1DV450_rn222cx
 
